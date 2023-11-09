@@ -1,0 +1,3644 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Closeness centrality ke 2 &#8212; Pencarian &amp; Penambangan Web</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas-ppw/Tugas5';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Closeness centrality" href="Tugas4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/profil.jpg" class="logo__image only-light" alt="Pencarian & Penambangan Web - Home"/>
+    <script>document.write(`<img src="../_static/profil.jpg" class="logo__image only-dark" alt="Pencarian & Penambangan Web - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ScrapeDataPTA_%28UTM%29.html">Tugas 1 Scrape Website pta.trunojoyo.ac.id with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas2.html">Tugas 2 Normalisasi text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas3.html">Tugas 3 implementasi Latent Directlet allocation (LDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas4.html">Closeness centrality</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Closeness centrality ke 2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas-ppw/Tugas5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tugas-ppw/Tugas5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Closeness centrality ke 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-crawl-data-judul-berita-dan-isi-berita-dari-https-jpnn-com">Langkah 1: Crawl data judul berita dan isi berita dari https://jpnn.com/</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#politik">Politik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekonomi">Ekonomi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#olahraga">Olahraga</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gabungkan-data">Gabungkan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-meringkas-fitur-content-spacy">Langkah 2: Meringkas Fitur Content(Spacy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-tf-idf">Langkah 3: TF IDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-cosine-similarity">Langkah 4: Cosine Similarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-graph">Langkah 5: Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-closeness-centrality">Langkah 6: Closeness Centrality</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="closeness-centrality-ke-2">
+<h1>Closeness centrality ke 2<a class="headerlink" href="#closeness-centrality-ke-2" title="Permalink to this heading">#</a></h1>
+<p>**Kita cek terlebih dahulu website tersebut bisa kita crawling apa tidak **</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.jpnn.com/&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Periksa status code</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Halaman berhasil diakses.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Halaman tidak ditemukan.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Terjadi kesalahan. Status code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Halaman berhasil diakses.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="langkah-1-crawl-data-judul-berita-dan-isi-berita-dari-https-jpnn-com">
+<h2>Langkah 1: Crawl data judul berita dan isi berita dari <a class="reference external" href="https://jpnn.com/">https://jpnn.com/</a><a class="headerlink" href="#langkah-1-crawl-data-judul-berita-dan-isi-berita-dari-https-jpnn-com" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="politik">
+<h2>Politik<a class="headerlink" href="#politik" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">article_content</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;articleBody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">article_content</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">content</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.jpnn.com/indeks?id=248&amp;d=</span><span class="si">{day}</span><span class="s2">&amp;m=</span><span class="si">{month}</span><span class="s2">&amp;y=</span><span class="si">{year}</span><span class="s2">&amp;tab=all&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">current_date</span> <span class="o">=</span> <span class="n">start_date</span>
+    <span class="k">while</span> <span class="n">current_date</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+            <span class="n">news_elements</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;content&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">news_elements</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+                <span class="n">article_url</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+
+            <span class="n">current_date</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to fetch data for </span><span class="si">{</span><span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">news_data</span> <span class="o">=</span> <span class="n">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-2-0c4c6c7b263c&gt;</span> in <span class="ni">&lt;cell line: 45&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">end_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> 
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">news_data</span> <span class="o">=</span> <span class="n">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-2-0c4c6c7b263c&gt;</span> in <span class="ni">scrape_news_data</span><span class="nt">(start_date, end_date)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>                 <span class="n">title</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>                 <span class="n">article_url</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">31</span>                 <span class="n">content</span> <span class="o">=</span> <span class="n">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> 
+<span class="g g-Whitespace">     </span><span class="mi">33</span>                 <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+
+<span class="nn">&lt;ipython-input-2-0c4c6c7b263c&gt;</span> in <span class="ni">get_article_content</span><span class="nt">(article_url)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">def</span> <span class="nf">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">73</span><span class="s2">     return request(&quot;get&quot;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="s2"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="s2">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="s2">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="s2">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="s2">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="s2">         return resp</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">486</span><span class="s2">             resp = conn.urlopen(</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="s2">                 method=request.method,</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="s2">                 url=url,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span><span class="s2">             # Make the request on the HTTPConnection object</span>
+<span class="ne">--&gt; </span><span class="mi">791</span><span class="s2">             response = self._make_request(</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="s2">                 conn,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span><span class="s2">                 method,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span><span class="s2">         # Receive the response from the server</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">537</span><span class="s2">             response = conn.getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span><span class="s2">         except (BaseSSLError, OSError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connection.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span><span class="s2">         # Get the response from http.client.HTTPConnection</span>
+<span class="ne">--&gt; </span><span class="mi">461</span><span class="s2">         httplib_response = super().getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span><span class="s2">         try:</span>
+
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1373</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1374</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1375</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1376</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1377</span><span class="s2">                 self.close()</span>
+
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">318</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">                 break</span>
+
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">279</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+
+<span class="nn">/usr/lib/python3.10/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">705</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span><span class="s2">                 self._timeout_occurred = True</span>
+
+<span class="nn">/usr/lib/python3.10/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1272</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1274</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1275</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+
+<span class="nn">/usr/lib/python3.10/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1128</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">-&gt; </span><span class="mi">1130</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span><span class="s2">                 return self._sslobj.read(len)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pandas DataFrame from the scraped data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;politik&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-ec118526-f279-40df-8e36-72190848abc2" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Megawati Ungkap Orang Luar Tak Bisa Langsung J...</td>
+      <td>jpnn.com, JAKARTA - Ketua Umum PDI Perjuangan ...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Peringati Hari Kesaktian Pancasila, KawanJuang...</td>
+      <td>jpnn.com, PURWAKARTA - Para sukarelawan penduk...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>Ganjar dan Anies Hadiri Acara IdeaFest, di Man...</td>
+      <td>jpnn.com, JAKARTA - Ketiga bacapres Ganjar Pra...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Silaturahmi ke Rembang, Anies Diberi Tongkat K...</td>
+      <td>jpnn.com, JAKARTA - Anies Baswedan mengunjungi...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Survei Erick Thohir Teratas di Jatim, Pengamat...</td>
+      <td>jpnn.com, JAKARTA - Nama Erick Thohir punya ke...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>635</th>
+      <td>01-11-2023</td>
+      <td>Ribuan Warga Aceh Berzikir &amp; Selawat Bersama A...</td>
+      <td>jpnn.com, ACEH UTARA - Puluhan ribu rakyat Ace...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>636</th>
+      <td>01-11-2023</td>
+      <td>Mendagri Tito Karnavian Dorong Polri Aktif Awa...</td>
+      <td>jpnn.com, JAKARTA -  Menteri Dalam Negeri (Men...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>637</th>
+      <td>01-11-2023</td>
+      <td>PKPU Nomor 19 Sudah Direvisi, tetapi Gibran Be...</td>
+      <td>jpnn.com - JAKARTA - Komisi II DPR RI dan peme...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>638</th>
+      <td>01-11-2023</td>
+      <td>Survei: Masyarakat Jateng Mulai Masif Mendukun...</td>
+      <td>jpnn.com - JAKARTA - Hasil survei terbaru Poll...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>639</th>
+      <td>01-11-2023</td>
+      <td>Ujang: Jokowi Ingin Menunjukkan Power, Tanpa P...</td>
+      <td>jpnn.com, JAKARTA - Pengamat politik dari Univ...</td>
+      <td>politik</td>
+    </tr>
+  </tbody>
+</table>
+<p>640 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ec118526-f279-40df-8e36-72190848abc2')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ec118526-f279-40df-8e36-72190848abc2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ec118526-f279-40df-8e36-72190848abc2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-68a9eff1-d7e6-4935-bf8a-c46ae0c550b2">
+  <button class="colab-df-quickchart" onclick="quickchart('df-68a9eff1-d7e6-4935-bf8a-c46ae0c550b2')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-68a9eff1-d7e6-4935-bf8a-c46ae0c550b2 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the DataFrame to a CSV file</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;jnn_politik_news.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekonomi">
+<h2>Ekonomi<a class="headerlink" href="#ekonomi" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">article_content</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;articleBody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">article_content</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">content</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.jpnn.com/indeks?id=216&amp;d=01&amp;m=10&amp;y=2023&amp;tab=all&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">current_date</span> <span class="o">=</span> <span class="n">start_date</span>
+    <span class="k">while</span> <span class="n">current_date</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+            <span class="n">news_elements</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;content&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">news_elements</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+                <span class="n">article_url</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+
+            <span class="n">current_date</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to fetch data for </span><span class="si">{</span><span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">news_data</span> <span class="o">=</span> <span class="n">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pandas DataFrame from the scraped data</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_data</span><span class="p">)</span>
+
+<span class="c1"># Save the DataFrame to a CSV file</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;jpnn_ekonomi_news.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Ekonomi&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-c19232c7-c901-416f-afbf-5375177bb960" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Erick Thohir Mengaku Jatuh Cinta pada Program ...</td>
+      <td>jpnn.com, JAKARTA - Menteri Badan Usaha Milik ...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Menteri Bahlil Pastikan Investasi Rempang Berd...</td>
+      <td>jpnn.com, JAKARTA - Menteri Investasi/Kepala B...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>Gandeng LKPP, Pertamina Implementasikan Aplika...</td>
+      <td>jpnn.com, JAKARTA - PT Pertamina (Persero) men...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Kini Fokus Jadi Entrepreneur, Zahra Amalina Me...</td>
+      <td>jpnn.com, JAKARTA - Model sekaligus pemain sin...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Terapkan ESG, OCS Group Gandeng World Cleanup ...</td>
+      <td>jpnn.com, JAKARTA - OCS Group Indonesia mengua...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>507</th>
+      <td>01-11-2023</td>
+      <td>Ikhitiar Pinjam Yuk Mendorong UMKM Kembangkan ...</td>
+      <td>jpnn.com, JAKARTA - Platform peer to peer lend...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>508</th>
+      <td>01-11-2023</td>
+      <td>Gegara Ini Industri Kreatif di Berbagai Daerah...</td>
+      <td>jpnn.com, JAKARTA - Pelaku industri kreatif di...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>509</th>
+      <td>01-11-2023</td>
+      <td>Kinerja Moncer, KAI Logistik Raih Penghargaan ...</td>
+      <td>jpnn.com, JAKARTA - KAI Logistik meraih pengha...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>510</th>
+      <td>01-11-2023</td>
+      <td>Bicara di Diskusi Pameran Pangan, Ketua Aprind...</td>
+      <td>jpnn.com, JAKARTA PUSAT - Ketua Asosiasi Pengu...</td>
+      <td>Ekonomi</td>
+    </tr>
+    <tr>
+      <th>511</th>
+      <td>01-11-2023</td>
+      <td>Gelar RUPS 2023, TKDN Umumkan Pengangkatan Kom...</td>
+      <td>jpnn.com, JAKARTA - PT Teknologi Karya Digital...</td>
+      <td>Ekonomi</td>
+    </tr>
+  </tbody>
+</table>
+<p>512 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c19232c7-c901-416f-afbf-5375177bb960')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c19232c7-c901-416f-afbf-5375177bb960 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c19232c7-c901-416f-afbf-5375177bb960');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-3c1beb0e-9b78-4057-87f1-47757b479874">
+  <button class="colab-df-quickchart" onclick="quickchart('df-3c1beb0e-9b78-4057-87f1-47757b479874')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-3c1beb0e-9b78-4057-87f1-47757b479874 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;jpnn_ekonomi_news.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="olahraga">
+<h2>Olahraga<a class="headerlink" href="#olahraga" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">article_content</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;articleBody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">article_content</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">content</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.jpnn.com/indeks?id=213&amp;d=01&amp;m=10&amp;y=2023&amp;tab=all&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">current_date</span> <span class="o">=</span> <span class="n">start_date</span>
+    <span class="k">while</span> <span class="n">current_date</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">current_date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+            <span class="n">news_elements</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;content&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">news_elements</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+                <span class="n">article_url</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">get_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+
+            <span class="n">current_date</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to fetch data for </span><span class="si">{</span><span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">news_data_olahraga</span> <span class="o">=</span> <span class="n">scrape_news_data</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pandas DataFrame from the scraped data</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_data_olahraga</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Olahraga&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-02bfdd79-33ec-41de-ba17-78cbbc296bab" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Klasemen Liga 1: Berpesta Gol, Persib Bandung ...</td>
+      <td>jpnn.com - BANDUNG - Persib Bandung membukukan...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Menpora Dito Ariotedjo Ungkap Peran Anak Muda ...</td>
+      <td>jpnn.com - Menteri Pemuda dan Olahraga (Menpor...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>China Belum Bisa Menang di Road to Paris, Liha...</td>
+      <td>jpnn.com - XI’AN – China menelan kekalahan ked...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Road to Paris: Mesir Bikin Jepang Menderita, A...</td>
+      <td>jpnn.com - TOKYO – Kejutan besar terjadi pada ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Lagi! Veda Ega Bikin Pembalap Tuan Rumah Tak B...</td>
+      <td>jpnn.com, JAKARTA - Pembalap muda Indonesia Ve...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>01-11-2023</td>
+      <td>Lalu Muhammad Zohri Finis Keenam, Indonesia Pa...</td>
+      <td>jpnn.com, JAKARTA - Kontingen atlet Indonesia ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>01-11-2023</td>
+      <td>Garuda Muda Siap Beri Obat Pelipur Lara Bagi F...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu campuran In...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>01-11-2023</td>
+      <td>Bulu Tangkis Asian Games 2022: Tim Putra China...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu putra China...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>01-11-2023</td>
+      <td>Asian Games 2022: Kehabisan Bensin, Timnas Bas...</td>
+      <td>jpnn.com - Timnas basket putra Indonesia menga...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>575</th>
+      <td>01-11-2023</td>
+      <td>Real Madrid Berpesta di Kandang Girona, Ada In...</td>
+      <td>jpnn.com - CATALONIA - Real Madrid kembali mem...</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>576 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-02bfdd79-33ec-41de-ba17-78cbbc296bab')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-02bfdd79-33ec-41de-ba17-78cbbc296bab button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-02bfdd79-33ec-41de-ba17-78cbbc296bab');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-c0585900-79a7-466d-adc3-88b7b220e546">
+  <button class="colab-df-quickchart" onclick="quickchart('df-c0585900-79a7-466d-adc3-88b7b220e546')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-c0585900-79a7-466d-adc3-88b7b220e546 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the DataFrame to a CSV file</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;jpnn_olahraga_news.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gabungkan-data">
+<h2>Gabungkan Data<a class="headerlink" href="#gabungkan-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">combined_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-2196281f-d0f6-4beb-bb21-6d8ca528c0c3" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Megawati Ungkap Orang Luar Tak Bisa Langsung J...</td>
+      <td>jpnn.com, JAKARTA - Ketua Umum PDI Perjuangan ...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Peringati Hari Kesaktian Pancasila, KawanJuang...</td>
+      <td>jpnn.com, PURWAKARTA - Para sukarelawan penduk...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>Ganjar dan Anies Hadiri Acara IdeaFest, di Man...</td>
+      <td>jpnn.com, JAKARTA - Ketiga bacapres Ganjar Pra...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Silaturahmi ke Rembang, Anies Diberi Tongkat K...</td>
+      <td>jpnn.com, JAKARTA - Anies Baswedan mengunjungi...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Survei Erick Thohir Teratas di Jatim, Pengamat...</td>
+      <td>jpnn.com, JAKARTA - Nama Erick Thohir punya ke...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>01-11-2023</td>
+      <td>Lalu Muhammad Zohri Finis Keenam, Indonesia Pa...</td>
+      <td>jpnn.com, JAKARTA - Kontingen atlet Indonesia ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>01-11-2023</td>
+      <td>Garuda Muda Siap Beri Obat Pelipur Lara Bagi F...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu campuran In...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>01-11-2023</td>
+      <td>Bulu Tangkis Asian Games 2022: Tim Putra China...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu putra China...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>01-11-2023</td>
+      <td>Asian Games 2022: Kehabisan Bensin, Timnas Bas...</td>
+      <td>jpnn.com - Timnas basket putra Indonesia menga...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>01-11-2023</td>
+      <td>Real Madrid Berpesta di Kandang Girona, Ada In...</td>
+      <td>jpnn.com - CATALONIA - Real Madrid kembali mem...</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2196281f-d0f6-4beb-bb21-6d8ca528c0c3')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-2196281f-d0f6-4beb-bb21-6d8ca528c0c3 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-2196281f-d0f6-4beb-bb21-6d8ca528c0c3');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e3238f60-e0d7-4e46-b88d-fcc9b7a4839d">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e3238f60-e0d7-4e46-b88d-fcc9b7a4839d')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e3238f60-e0d7-4e46-b88d-fcc9b7a4839d button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_df</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>politik     640
+Olahraga    576
+Ekonomi     512
+Name: Label, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the DataFrame to a CSV file</span>
+<span class="n">combined_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data_label_news.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-2ea576d3-fea7-48bd-92f7-c7d57a5e728b" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Megawati Ungkap Orang Luar Tak Bisa Langsung J...</td>
+      <td>jpnn.com, JAKARTA - Ketua Umum PDI Perjuangan ...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Peringati Hari Kesaktian Pancasila, KawanJuang...</td>
+      <td>jpnn.com, PURWAKARTA - Para sukarelawan penduk...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>Ganjar dan Anies Hadiri Acara IdeaFest, di Man...</td>
+      <td>jpnn.com, JAKARTA - Ketiga bacapres Ganjar Pra...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Silaturahmi ke Rembang, Anies Diberi Tongkat K...</td>
+      <td>jpnn.com, JAKARTA - Anies Baswedan mengunjungi...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Survei Erick Thohir Teratas di Jatim, Pengamat...</td>
+      <td>jpnn.com, JAKARTA - Nama Erick Thohir punya ke...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>01-11-2023</td>
+      <td>Lalu Muhammad Zohri Finis Keenam, Indonesia Pa...</td>
+      <td>jpnn.com, JAKARTA - Kontingen atlet Indonesia ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>01-11-2023</td>
+      <td>Garuda Muda Siap Beri Obat Pelipur Lara Bagi F...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu campuran In...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>01-11-2023</td>
+      <td>Bulu Tangkis Asian Games 2022: Tim Putra China...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu putra China...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>01-11-2023</td>
+      <td>Asian Games 2022: Kehabisan Bensin, Timnas Bas...</td>
+      <td>jpnn.com - Timnas basket putra Indonesia menga...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>01-11-2023</td>
+      <td>Real Madrid Berpesta di Kandang Girona, Ada In...</td>
+      <td>jpnn.com - CATALONIA - Real Madrid kembali mem...</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2ea576d3-fea7-48bd-92f7-c7d57a5e728b')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-2ea576d3-fea7-48bd-92f7-c7d57a5e728b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-2ea576d3-fea7-48bd-92f7-c7d57a5e728b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d42d2e0f-bcdc-40e1-89e0-7a24f36f7fa2">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d42d2e0f-bcdc-40e1-89e0-7a24f36f7fa2')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d42d2e0f-bcdc-40e1-89e0-7a24f36f7fa2 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       jpnn.com, JAKARTA - Ketua Umum PDI Perjuangan ...
+1       jpnn.com, PURWAKARTA - Para sukarelawan penduk...
+2       jpnn.com, JAKARTA - Ketiga bacapres Ganjar Pra...
+3       jpnn.com, JAKARTA - Anies Baswedan mengunjungi...
+4       jpnn.com, JAKARTA - Nama Erick Thohir punya ke...
+                              ...                        
+1723    jpnn.com, JAKARTA - Kontingen atlet Indonesia ...
+1724    jpnn.com - Tim bulu tangkis beregu campuran In...
+1725    jpnn.com - Tim bulu tangkis beregu putra China...
+1726    jpnn.com - Timnas basket putra Indonesia menga...
+1727    jpnn.com - CATALONIA - Real Madrid kembali mem...
+Name: Content, Length: 1728, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="langkah-2-meringkas-fitur-content-spacy">
+<h2>Langkah 2: Meringkas Fitur Content(Spacy)<a class="headerlink" href="#langkah-2-meringkas-fitur-content-spacy" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/drive
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/ppw/tugas/Data/data_label_news.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-82985e7d-cfc0-480c-987f-f5fe88f2c5c2" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Megawati Ungkap Orang Luar Tak Bisa Langsung J...</td>
+      <td>jpnn.com, JAKARTA - Ketua Umum PDI Perjuangan ...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Peringati Hari Kesaktian Pancasila, KawanJuang...</td>
+      <td>jpnn.com, PURWAKARTA - Para sukarelawan penduk...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>Ganjar dan Anies Hadiri Acara IdeaFest, di Man...</td>
+      <td>jpnn.com, JAKARTA - Ketiga bacapres Ganjar Pra...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Silaturahmi ke Rembang, Anies Diberi Tongkat K...</td>
+      <td>jpnn.com, JAKARTA - Anies Baswedan mengunjungi...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Survei Erick Thohir Teratas di Jatim, Pengamat...</td>
+      <td>jpnn.com, JAKARTA - Nama Erick Thohir punya ke...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>01-11-2023</td>
+      <td>Lalu Muhammad Zohri Finis Keenam, Indonesia Pa...</td>
+      <td>jpnn.com, JAKARTA - Kontingen atlet Indonesia ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>01-11-2023</td>
+      <td>Garuda Muda Siap Beri Obat Pelipur Lara Bagi F...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu campuran In...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>01-11-2023</td>
+      <td>Bulu Tangkis Asian Games 2022: Tim Putra China...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu putra China...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>01-11-2023</td>
+      <td>Asian Games 2022: Kehabisan Bensin, Timnas Bas...</td>
+      <td>jpnn.com - Timnas basket putra Indonesia menga...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>01-11-2023</td>
+      <td>Real Madrid Berpesta di Kandang Girona, Ada In...</td>
+      <td>jpnn.com - CATALONIA - Real Madrid kembali mem...</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-82985e7d-cfc0-480c-987f-f5fe88f2c5c2')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-82985e7d-cfc0-480c-987f-f5fe88f2c5c2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-82985e7d-cfc0-480c-987f-f5fe88f2c5c2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-f7aca7d4-fd4a-4b38-badc-fccbd7dcfc49">
+  <button class="colab-df-quickchart" onclick="quickchart('df-f7aca7d4-fd4a-4b38-badc-fccbd7dcfc49')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-f7aca7d4-fd4a-4b38-badc-fccbd7dcfc49 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#install library</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sastrawi
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>swifter
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>gensim
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sastrawi
+  Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">3.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: sastrawi
+Successfully installed sastrawi-1.0.1
+Collecting swifter
+  Downloading swifter-1.4.0.tar.gz (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.2/1.2 MB</span> <span class=" -Color -Color-Red">13.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (1.5.3)
+Requirement already satisfied: psutil&gt;=5.6.6 in /usr/local/lib/python3.10/dist-packages (from swifter) (5.9.5)
+Requirement already satisfied: dask[dataframe]&gt;=2.10.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (2023.8.1)
+Requirement already satisfied: tqdm&gt;=4.33.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (4.66.1)
+Requirement already satisfied: click&gt;=8.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (8.1.7)
+Requirement already satisfied: cloudpickle&gt;=1.5.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (2.2.1)
+Requirement already satisfied: fsspec&gt;=2021.09.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (2023.6.0)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (23.2)
+Requirement already satisfied: partd&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.4.1)
+Requirement already satisfied: pyyaml&gt;=5.3.1 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (6.0.1)
+Requirement already satisfied: toolz&gt;=0.10.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (0.12.0)
+Requirement already satisfied: importlib-metadata&gt;=4.13.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (6.8.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (2023.3.post1)
+Requirement already satisfied: numpy&gt;=1.21.0 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (1.23.5)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from importlib-metadata&gt;=4.13.0-&gt;dask[dataframe]&gt;=2.10.0-&gt;swifter) (3.17.0)
+Requirement already satisfied: locket in /usr/local/lib/python3.10/dist-packages (from partd&gt;=1.2.0-&gt;dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.0.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=1.0.0-&gt;swifter) (1.16.0)
+Building wheels for collected packages: swifter
+  Building wheel for swifter (setup.py) ... ?25l?25hdone
+  Created wheel for swifter: filename=swifter-1.4.0-py3-none-any.whl size=16505 sha256=753ecbfac035f91f095831c98756783570434cdf23c30ee0b0aa2ad4395dbc03
+  Stored in directory: /root/.cache/pip/wheels/e4/cf/51/0904952972ee2c7aa3709437065278dc534ec1b8d2ad41b443
+Successfully built swifter
+Installing collected packages: swifter
+Successfully installed swifter-1.4.0
+Requirement already satisfied: gensim in /usr/local/lib/python3.10/dist-packages (4.3.2)
+Requirement already satisfied: numpy&gt;=1.18.5 in /usr/local/lib/python3.10/dist-packages (from gensim) (1.23.5)
+Requirement already satisfied: scipy&gt;=1.7.0 in /usr/local/lib/python3.10/dist-packages (from gensim) (1.11.3)
+Requirement already satisfied: smart-open&gt;=1.8.1 in /usr/local/lib/python3.10/dist-packages (from gensim) (6.4.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impor pustaka spaCy</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+
+<span class="c1"># Memuat model bahasa Inggris spaCy</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+
+<span class="c1"># Berikan berita yang ingin diringkas</span>
+<span class="n">berita</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">900</span><span class="p">]</span>
+
+<span class="c1"># Analisis teks menggunakan spaCy</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">berita</span><span class="p">)</span>
+
+<span class="c1"># Meringkas teks dengan mengekstrak kalimat-kalimat utama</span>
+<span class="n">kalimat_utama</span> <span class="o">=</span> <span class="p">[</span><span class="n">kalimat</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">kalimat</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">sents</span><span class="p">]</span>
+<span class="n">ringkasan</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kalimat_utama</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>  <span class="c1"># Mengambil dua kalimat pertama sebagai ringkasan</span>
+
+<span class="c1"># Cetak ringkasan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ringkasan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jpnn.com, JAKARTA - OCS Group Indonesia menguatkan komitmennya untuk menerapkan prinsip keberlanjutan (sustainability), salah satunya lewat program aksi bersih-bersih bareng World Cleanup Day di Taman Edukasi dan Konservasi Ciliwung. &quot;Bersama-sama, kami merangkul semangat untuk perubahan perilaku sehari-hari melalui aksi nyata dalam sehari, demi masa depan yang lebih bersih,&quot; ungkap ESG Programme Leader OCS Group Indonesia Ricardo Purba. Ricardo mengatakan inisiasi bersih-bersih merupakan program yang sejalan dengan Komitmen ESG (Economy, Social, and Governance).&quot;Inisiasi itu tak hanya sebatas membangun kesadaran akan pentingnya lingkungan yang bersih. Kami mendorong masyarakat agar secara perlahan tapi pasti mampu mengubah perilaku mereka terhadap sampah, &quot; Ricardo yang juga merupakan Key Account &amp; Service Excellence Director iti. Ricardo menambahkan pihaknya mengutamakan upaya-upaya waste management untuk memastikan bahwa sampah yang terkumpul akan diproses lebih lanjut.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="langkah-3-tf-idf">
+<h2>Langkah 3: TF IDF<a class="headerlink" href="#langkah-3-tf-idf" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nltk</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nltk in /usr/local/lib/python3.10/dist-packages (3.8.1)
+Requirement already satisfied: click in /usr/local/lib/python3.10/dist-packages (from nltk) (8.1.7)
+Requirement already satisfied: joblib in /usr/local/lib/python3.10/dist-packages (from nltk) (1.3.2)
+Requirement already satisfied: regex&gt;=2021.8.3 in /usr/local/lib/python3.10/dist-packages (from nltk) (2023.6.3)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from nltk) (4.66.1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalimat</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">ringkasan</span><span class="p">)</span>
+
+<span class="n">tfidf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span>
+
+<span class="n">terms</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kalimat</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Kalimat </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sentence</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">term</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+        <span class="n">tfidf_value</span> <span class="o">=</span> <span class="n">tfidf_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">tfidf_value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">term</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tfidf_value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kalimat 1: jpnn.com, JAKARTA - OCS Group Indonesia menguatkan komitmennya untuk menerapkan prinsip keberlanjutan (sustainability), salah satunya lewat program aksi bersih-bersih bareng World Cleanup Day di Taman Edukasi dan Konservasi Ciliwung.
+aksi: 0.1571
+bareng: 0.1916
+bersih: 0.2273
+ciliwung: 0.1916
+cleanup: 0.1916
+com: 0.1916
+dan: 0.1916
+day: 0.1916
+di: 0.1916
+edukasi: 0.1916
+group: 0.1571
+indonesia: 0.1571
+jakarta: 0.1916
+jpnn: 0.1916
+keberlanjutan: 0.1916
+komitmennya: 0.1916
+konservasi: 0.1916
+lewat: 0.1916
+menerapkan: 0.1916
+menguatkan: 0.1916
+ocs: 0.1571
+prinsip: 0.1916
+program: 0.1571
+salah: 0.1916
+satunya: 0.1916
+sustainability: 0.1916
+taman: 0.1916
+untuk: 0.1326
+world: 0.1916
+
+Kalimat 2: &quot;Bersama-sama, kami merangkul semangat untuk perubahan perilaku sehari-hari melalui aksi nyata dalam sehari, demi masa depan yang lebih bersih,&quot; ungkap ESG Programme Leader OCS Group Indonesia Ricardo Purba.
+aksi: 0.1583
+bersama: 0.1931
+bersih: 0.1145
+dalam: 0.1931
+demi: 0.1931
+depan: 0.1931
+esg: 0.1583
+group: 0.1583
+hari: 0.1931
+indonesia: 0.1583
+kami: 0.1583
+leader: 0.1931
+lebih: 0.1583
+masa: 0.1931
+melalui: 0.1931
+merangkul: 0.1931
+nyata: 0.1931
+ocs: 0.1583
+perilaku: 0.1583
+perubahan: 0.1931
+programme: 0.1931
+purba: 0.1931
+ricardo: 0.1145
+sama: 0.1931
+sehari: 0.3862
+semangat: 0.1931
+ungkap: 0.1931
+untuk: 0.1337
+yang: 0.0989
+
+Kalimat 3: Ricardo mengatakan inisiasi bersih-bersih merupakan program yang sejalan dengan Komitmen ESG (Economy, Social, and Governance).
+and: 0.2805
+bersih: 0.3328
+dengan: 0.2805
+economy: 0.2805
+esg: 0.2300
+governance: 0.2805
+inisiasi: 0.2300
+komitmen: 0.2805
+mengatakan: 0.2805
+merupakan: 0.2300
+program: 0.2300
+ricardo: 0.1664
+sejalan: 0.2805
+social: 0.2805
+yang: 0.1437
+
+Kalimat 4: &quot;Inisiasi itu tak hanya sebatas membangun kesadaran akan pentingnya lingkungan yang bersih.
+akan: 0.2598
+bersih: 0.1880
+hanya: 0.3169
+inisiasi: 0.2598
+itu: 0.3169
+kesadaran: 0.3169
+lingkungan: 0.3169
+membangun: 0.3169
+pentingnya: 0.3169
+sebatas: 0.3169
+tak: 0.3169
+yang: 0.1623
+
+Kalimat 5: Kami mendorong masyarakat agar secara perlahan tapi pasti mampu mengubah perilaku mereka terhadap sampah, &quot; Ricardo yang juga merupakan Key Account &amp; Service Excellence Director iti.
+account: 0.2167
+agar: 0.2167
+director: 0.2167
+excellence: 0.2167
+iti: 0.2167
+juga: 0.2167
+kami: 0.1777
+key: 0.2167
+mampu: 0.2167
+masyarakat: 0.2167
+mendorong: 0.2167
+mengubah: 0.2167
+mereka: 0.2167
+merupakan: 0.1777
+pasti: 0.2167
+perilaku: 0.1777
+perlahan: 0.2167
+ricardo: 0.1285
+sampah: 0.1777
+secara: 0.2167
+service: 0.2167
+tapi: 0.2167
+terhadap: 0.2167
+yang: 0.1110
+
+Kalimat 6: Ricardo menambahkan pihaknya mengutamakan upaya-upaya waste management untuk memastikan bahwa sampah yang terkumpul akan diproses lebih lanjut.
+akan: 0.1982
+bahwa: 0.2417
+diproses: 0.2417
+lanjut: 0.2417
+lebih: 0.1982
+management: 0.2417
+memastikan: 0.2417
+menambahkan: 0.2417
+mengutamakan: 0.2417
+pihaknya: 0.2417
+ricardo: 0.1434
+sampah: 0.1982
+terkumpul: 0.2417
+untuk: 0.1674
+upaya: 0.4835
+waste: 0.2417
+yang: 0.1239
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="langkah-4-cosine-similarity">
+<h2>Langkah 4: Cosine Similarity<a class="headerlink" href="#langkah-4-cosine-similarity" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cosine_similarities</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">,</span> <span class="n">tfidf_matrix</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)):</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="n">cosine_similarities</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Similarity Kalimat </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> dan Kalimat </span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">similarity</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Similarity Kalimat 1 dan Kalimat 2: 0.1432
+Similarity Kalimat 1 dan Kalimat 3: 0.1118
+Similarity Kalimat 1 dan Kalimat 4: 0.0427
+Similarity Kalimat 1 dan Kalimat 5: 0.0000
+Similarity Kalimat 1 dan Kalimat 6: 0.0222
+Similarity Kalimat 2 dan Kalimat 3: 0.1078
+Similarity Kalimat 2 dan Kalimat 4: 0.0376
+Similarity Kalimat 2 dan Kalimat 5: 0.0820
+Similarity Kalimat 2 dan Kalimat 6: 0.0824
+Similarity Kalimat 3 dan Kalimat 4: 0.1456
+Similarity Kalimat 3 dan Kalimat 5: 0.0782
+Similarity Kalimat 3 dan Kalimat 6: 0.0417
+Similarity Kalimat 4 dan Kalimat 5: 0.0180
+Similarity Kalimat 4 dan Kalimat 6: 0.0716
+Similarity Kalimat 5 dan Kalimat 6: 0.0674
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosine_similarities</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)))</span>
+<span class="n">similarity_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-7d584c82-bae6-45c8-8bb2-74c82f02bca5" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.000000</td>
+      <td>0.143248</td>
+      <td>0.111772</td>
+      <td>0.042729</td>
+      <td>0.000000</td>
+      <td>0.022197</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.143248</td>
+      <td>1.000000</td>
+      <td>0.107806</td>
+      <td>0.037592</td>
+      <td>0.081959</td>
+      <td>0.082437</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.111772</td>
+      <td>0.107806</td>
+      <td>1.000000</td>
+      <td>0.145650</td>
+      <td>0.078197</td>
+      <td>0.041661</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.042729</td>
+      <td>0.037592</td>
+      <td>0.145650</td>
+      <td>1.000000</td>
+      <td>0.018020</td>
+      <td>0.071617</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000000</td>
+      <td>0.081959</td>
+      <td>0.078197</td>
+      <td>0.018020</td>
+      <td>1.000000</td>
+      <td>0.067400</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.022197</td>
+      <td>0.082437</td>
+      <td>0.041661</td>
+      <td>0.071617</td>
+      <td>0.067400</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7d584c82-bae6-45c8-8bb2-74c82f02bca5')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7d584c82-bae6-45c8-8bb2-74c82f02bca5 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7d584c82-bae6-45c8-8bb2-74c82f02bca5');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e3ebdbd2-93ed-422b-8dac-1fb14f0805b9">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e3ebdbd2-93ed-422b-8dac-1fb14f0805b9')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e3ebdbd2-93ed-422b-8dac-1fb14f0805b9 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="langkah-5-graph">
+<h2>Langkah 5: Graph<a class="headerlink" href="#langkah-5-graph" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cosine_similarities</span><span class="p">)):</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cosine_similarities</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cosine_similarities</span><span class="p">)):</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="n">cosine_similarities</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">similarity</span> <span class="o">&gt;</span> <span class="mf">0.02</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/91e3ce3e44a7316ff6ad91bb31bd9005bfe851eaab70bf7da335de4a6d873fbb.png" src="../_images/91e3ce3e44a7316ff6ad91bb31bd9005bfe851eaab70bf7da335de4a6d873fbb.png" />
+</div>
+</div>
+</section>
+<section id="langkah-6-closeness-centrality">
+<h2>Langkah 6: Closeness Centrality<a class="headerlink" href="#langkah-6-closeness-centrality" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">closeness_centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">sorted_closeness</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">closeness_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sorted Closeness Centrality:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">closeness</span> <span class="ow">in</span> <span class="n">sorted_closeness</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">closeness</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted Closeness Centrality:
+Node 1: 1.0000
+Node 2: 1.0000
+Node 5: 1.0000
+Node 0: 0.8333
+Node 3: 0.8333
+Node 4: 0.7143
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Node Tertinggi dengan Kalimat:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">closeness</span> <span class="ow">in</span> <span class="n">sorted_closeness</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="n">top_sentence</span> <span class="o">=</span> <span class="n">kalimat</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: Closeness Centrality = </span><span class="si">{</span><span class="n">closeness</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kalimat: </span><span class="si">{</span><span class="n">top_sentence</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node Tertinggi dengan Kalimat:
+Node 1: Closeness Centrality = 1.0000
+Kalimat: &quot;Bersama-sama, kami merangkul semangat untuk perubahan perilaku sehari-hari melalui aksi nyata dalam sehari, demi masa depan yang lebih bersih,&quot; ungkap ESG Programme Leader OCS Group Indonesia Ricardo Purba.
+
+Node 2: Closeness Centrality = 1.0000
+Kalimat: Ricardo mengatakan inisiasi bersih-bersih merupakan program yang sejalan dengan Komitmen ESG (Economy, Social, and Governance).
+
+Node 5: Closeness Centrality = 1.0000
+Kalimat: Ricardo menambahkan pihaknya mengutamakan upaya-upaya waste management untuk memastikan bahwa sampah yang terkumpul akan diproses lebih lanjut.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tugas-ppw"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Closeness centrality</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-crawl-data-judul-berita-dan-isi-berita-dari-https-jpnn-com">Langkah 1: Crawl data judul berita dan isi berita dari https://jpnn.com/</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#politik">Politik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekonomi">Ekonomi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#olahraga">Olahraga</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gabungkan-data">Gabungkan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-meringkas-fitur-content-spacy">Langkah 2: Meringkas Fitur Content(Spacy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-tf-idf">Langkah 3: TF IDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-cosine-similarity">Langkah 4: Cosine Similarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-graph">Langkah 5: Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-closeness-centrality">Langkah 6: Closeness Centrality</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Farid Ghozali
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
