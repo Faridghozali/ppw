@@ -1,0 +1,1513 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Ekstraksi keyword &#8212; Pencarian &amp; Penambangan Web</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas-ppw/Tugas6';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Closeness centrality ke 2" href="Tugas5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/profil.jpg" class="logo__image only-light" alt="Pencarian & Penambangan Web - Home"/>
+    <script>document.write(`<img src="../_static/profil.jpg" class="logo__image only-dark" alt="Pencarian & Penambangan Web - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ScrapeDataPTA_%28UTM%29.html">Tugas 1 Scrape Website pta.trunojoyo.ac.id with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas2.html">Tugas 2 Normalisasi text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas3.html">Tugas 3 implementasi Latent Directlet allocation (LDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas4.html">Closeness centrality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas5.html">Closeness centrality ke 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ekstraksi keyword</a></li>
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Faridghozali/ppw" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Faridghozali/ppw/issues/new?title=Issue%20on%20page%20%2Ftugas-ppw/Tugas6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tugas-ppw/Tugas6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ekstraksi keyword</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ekstraksi keyword</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#memecah-kalimat-dari-dokumen">Memecah kalimat dari dokumen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-co-occurancy-matriks-dari-kata-dalam-kalimat">Membentuk co-occurancy matriks dari kata dalam kalimat</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-grap-dari-co-occurancy-matriks-g">Membentuk grap dari co-occurancy matriks G</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-centrality-dari-node-dalam-graph">Menghitung centrality dari node dalam graph</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#merangking-node-kata-dari-centrality">Merangking node (kata) dari centrality</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-beberapa-kata-penting-berdasarkan-rangking">Menentukan beberapa kata penting berdasarkan rangking</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="ekstraksi-keyword">
+<h1>Ekstraksi keyword<a class="headerlink" href="#ekstraksi-keyword" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># menghubungkan ke drive</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-2-70185c791581&gt;</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># menghubungkan ke drive</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/drive.py</span> in <span class="ni">mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="n">mountpoint</span><span class="p">,</span> <span class="n">force_remount</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="o">=</span><span class="mi">120000</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="w">   </span><span class="sd">&quot;&quot;&quot;Mount your Google Drive at the specified mountpoint path.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">103</span>   <span class="k">return</span> <span class="n">_mount</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>       <span class="n">mountpoint</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>       <span class="n">force_remount</span><span class="o">=</span><span class="n">force_remount</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/drive.py</span> in <span class="ni">_mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, ephemeral, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>   <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>   <span class="k">if</span> <span class="n">ephemeral</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">132</span>     <span class="n">_message</span><span class="o">.</span><span class="n">blocking_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="s1">&#39;request_auth&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;authType&#39;</span><span class="p">:</span> <span class="s1">&#39;dfs_ephemeral&#39;</span><span class="p">},</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ni">blocking_request</span><span class="nt">(request_type, request, timeout_sec, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>       <span class="n">request_type</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">expect_reply</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>   <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>   <span class="k">return</span> <span class="n">read_reply_from_input</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">reply</span> <span class="o">=</span> <span class="n">_read_next_input_message</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">_NOT_READY</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">96</span>       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>       <span class="k">continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">if</span> <span class="p">(</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># membaca file CSV yang berada pada path dan menyimpannya dalam sebuah DataFrame bernama data.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/ppw/tugas/Data/data_label_news.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-bebd1204-09a2-405a-8122-815f0778aeea" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-10-2023</td>
+      <td>Megawati Ungkap Orang Luar Tak Bisa Langsung J...</td>
+      <td>jpnn.com, JAKARTA - Ketua Umum PDI Perjuangan ...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-10-2023</td>
+      <td>Peringati Hari Kesaktian Pancasila, KawanJuang...</td>
+      <td>jpnn.com, PURWAKARTA - Para sukarelawan penduk...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-10-2023</td>
+      <td>Ganjar dan Anies Hadiri Acara IdeaFest, di Man...</td>
+      <td>jpnn.com, JAKARTA - Ketiga bacapres Ganjar Pra...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-10-2023</td>
+      <td>Silaturahmi ke Rembang, Anies Diberi Tongkat K...</td>
+      <td>jpnn.com, JAKARTA - Anies Baswedan mengunjungi...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-10-2023</td>
+      <td>Survei Erick Thohir Teratas di Jatim, Pengamat...</td>
+      <td>jpnn.com, JAKARTA - Nama Erick Thohir punya ke...</td>
+      <td>politik</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>01-11-2023</td>
+      <td>Lalu Muhammad Zohri Finis Keenam, Indonesia Pa...</td>
+      <td>jpnn.com, JAKARTA - Kontingen atlet Indonesia ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>01-11-2023</td>
+      <td>Garuda Muda Siap Beri Obat Pelipur Lara Bagi F...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu campuran In...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>01-11-2023</td>
+      <td>Bulu Tangkis Asian Games 2022: Tim Putra China...</td>
+      <td>jpnn.com - Tim bulu tangkis beregu putra China...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>01-11-2023</td>
+      <td>Asian Games 2022: Kehabisan Bensin, Timnas Bas...</td>
+      <td>jpnn.com - Timnas basket putra Indonesia menga...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>01-11-2023</td>
+      <td>Real Madrid Berpesta di Kandang Girona, Ada In...</td>
+      <td>jpnn.com - CATALONIA - Real Madrid kembali mem...</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bebd1204-09a2-405a-8122-815f0778aeea')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-bebd1204-09a2-405a-8122-815f0778aeea button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-bebd1204-09a2-405a-8122-815f0778aeea');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-1bcd1b27-fc74-4fed-83f1-3a32495f18fd">
+  <button class="colab-df-quickchart" onclick="quickchart('df-1bcd1b27-fc74-4fed-83f1-3a32495f18fd')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-1bcd1b27-fc74-4fed-83f1-3a32495f18fd button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#install library</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sastrawi
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>swifter
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>gensim
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sastrawi
+  Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/209.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">112.6/209.7 kB</span> <span class=" -Color -Color-Red">3.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: sastrawi
+Successfully installed sastrawi-1.0.1
+Collecting swifter
+  Downloading swifter-1.4.0.tar.gz (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.2/1.2 MB</span> <span class=" -Color -Color-Red">16.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (1.5.3)
+Requirement already satisfied: psutil&gt;=5.6.6 in /usr/local/lib/python3.10/dist-packages (from swifter) (5.9.5)
+Requirement already satisfied: dask[dataframe]&gt;=2.10.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (2023.8.1)
+Requirement already satisfied: tqdm&gt;=4.33.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (4.66.1)
+Requirement already satisfied: click&gt;=8.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (8.1.7)
+Requirement already satisfied: cloudpickle&gt;=1.5.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (2.2.1)
+Requirement already satisfied: fsspec&gt;=2021.09.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (2023.6.0)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (23.2)
+Requirement already satisfied: partd&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.4.1)
+Requirement already satisfied: pyyaml&gt;=5.3.1 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (6.0.1)
+Requirement already satisfied: toolz&gt;=0.10.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (0.12.0)
+Requirement already satisfied: importlib-metadata&gt;=4.13.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (6.8.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (2023.3.post1)
+Requirement already satisfied: numpy&gt;=1.21.0 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (1.23.5)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from importlib-metadata&gt;=4.13.0-&gt;dask[dataframe]&gt;=2.10.0-&gt;swifter) (3.17.0)
+Requirement already satisfied: locket in /usr/local/lib/python3.10/dist-packages (from partd&gt;=1.2.0-&gt;dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.0.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=1.0.0-&gt;swifter) (1.16.0)
+Building wheels for collected packages: swifter
+  Building wheel for swifter (setup.py) ... ?25l?25hdone
+  Created wheel for swifter: filename=swifter-1.4.0-py3-none-any.whl size=16505 sha256=41d820e648dc732565ddaf5cfb19d0ae78241ea27d49a71489002c6a6e6681a4
+  Stored in directory: /root/.cache/pip/wheels/e4/cf/51/0904952972ee2c7aa3709437065278dc534ec1b8d2ad41b443
+Successfully built swifter
+Installing collected packages: swifter
+Successfully installed swifter-1.4.0
+Requirement already satisfied: gensim in /usr/local/lib/python3.10/dist-packages (4.3.2)
+Requirement already satisfied: numpy&gt;=1.18.5 in /usr/local/lib/python3.10/dist-packages (from gensim) (1.23.5)
+Requirement already satisfied: scipy&gt;=1.7.0 in /usr/local/lib/python3.10/dist-packages (from gensim) (1.11.3)
+Requirement already satisfied: smart-open&gt;=1.8.1 in /usr/local/lib/python3.10/dist-packages (from gensim) (6.4.0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="memecah-kalimat-dari-dokumen">
+<h1>Memecah kalimat dari dokumen<a class="headerlink" href="#memecah-kalimat-dari-dokumen" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impor pustaka spaCy</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+
+<span class="c1"># Memuat model bahasa Inggris spaCy</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mengambil dokumen</span>
+<span class="n">dokumen</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1700</span><span class="p">]</span>
+
+<span class="c1"># Analisis teks menggunakan spaCy</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">dokumen</span><span class="p">)</span>
+
+<span class="c1"># Mencetak setiap kalimat dari dokumen</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kalimat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">sents</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kalimat </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">kalimat</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kalimat 1: jpnn.com - TOCHIGI – Bendera merah terpaksa dikibarkan saat race MotoGP Jepang 2023 di Mobility Resort Motegi, Minggu (1/10) siang WIB baru setengah jalan.
+Kalimat 2: Kondisi trek yang tergenang air membuat keselamatan pembalap terancam.
+Kalimat 3: Saat red flag berkibar, Jorge Martin memimpin, disusul Francesco Bagnaia, dan Marc Marquez.
+Kalimat 4: Tak lama setelah seluruh pembalap tiba di garasinya masing-masing, hujan deras benar-benar mengguyur Mobility Resort Motegi.
+Kalimat 5: Sebelumnya, seluruh pembalap sudah mengganti motornya (penyesuaian ban).
+Kalimat 6: Hampir 80 persen pembalap mengganti motor (flag to flag) seusai
+Kalimat 7: lap ke-1.Perlombaan pun menjadi tegang.
+Kalimat 8: Para pembalap berupaya menjaga kesabaran.
+Kalimat 9: Pada lap ke-10, di saat trek makin basah, Martin memimpin, disusul Bagnaia, Marco Bezzecchi, Miguel Oliveira, dan Marquez.
+Kalimat 10: Seluruh pembalap memacu motornya dengan penuh kehati-hatian.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membentuk-co-occurancy-matriks-dari-kata-dalam-kalimat">
+<h1>Membentuk co-occurancy matriks dari kata dalam kalimat<a class="headerlink" href="#membentuk-co-occurancy-matriks-dari-kata-dalam-kalimat" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span><span class="p">,</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+
+<span class="c1"># Download NLTK stopwords for Indonesian</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tokenisasi kalimat</span>
+<span class="n">kalimat_list</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">dokumen</span><span class="p">)</span>
+
+<span class="c1"># Mengambil 3 sampai 5 kalimat</span>
+<span class="n">kalimat_terpilih</span> <span class="o">=</span> <span class="n">kalimat_list</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># Menggabungkan kalimat menjadi satu teks</span>
+<span class="n">teks</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kalimat_terpilih</span><span class="p">)</span>
+
+<span class="c1"># Menghilangkan tanda baca ,.- dari teks</span>
+<span class="n">teks_cleaned</span> <span class="o">=</span> <span class="n">teks</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+
+<span class="c1"># Tokenisasi kata</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">teks_cleaned</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>  <span class="c1"># Mengonversi ke huruf kecil</span>
+
+<span class="c1"># Hapus stopwords menggunakan NLTK stopwords Bahasa Indonesia</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+<span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+
+<span class="c1"># Membuat matriks co-occurrence</span>
+<span class="n">co_occurrence_matrix</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
+<span class="c1"># Menghitung frekuensi kemunculan kata bersama</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_words</span><span class="p">)),</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">word_i</span><span class="p">,</span> <span class="n">word_j</span> <span class="o">=</span> <span class="n">filtered_words</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">filtered_words</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">co_occurrence_matrix</span><span class="p">[</span><span class="n">word_i</span><span class="p">][</span><span class="n">word_j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">co_occurrence_matrix</span><span class="p">[</span><span class="n">word_j</span><span class="p">][</span><span class="n">word_i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Menampilkan matriks co-occurrence dalam bentuk tabel menggunakan pandas</span>
+<span class="n">words_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">filtered_words</span><span class="p">))</span>
+<span class="n">matrix_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words_list</span><span class="p">)</span>
+<span class="n">co_occurrence_matrix_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">matrix_size</span><span class="p">,</span> <span class="n">matrix_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">word_j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words_list</span><span class="p">):</span>
+        <span class="n">co_occurrence_matrix_array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">[</span><span class="n">word_i</span><span class="p">][</span><span class="n">word_j</span><span class="p">]</span>
+
+<span class="n">df_co_occurrence</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">co_occurrence_matrix_array</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">words_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">words_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DataFrame Co-occurrence:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_co_occurrence</span><span class="p">)</span>
+
+<span class="c1"># Membuat graf dari matriks co-occurrence</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">co_occurrence_matrix_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrame Co-occurrence:
+         110  2023  80  air  bagnaia  ban  basah  benarbenar  bendera  \
+110        0     1   1    1        2    1      1           1        1   
+2023       1     0   1    1        2    1      1           1        1   
+80         1     1   0    1        2    1      1           1        1   
+air        1     1   1    0        2    1      1           1        1   
+bagnaia    2     2   2    2        2    2      2           2        2   
+...      ...   ...  ..  ...      ...  ...    ...         ...      ...   
+to         1     1   1    1        2    1      1           1        1   
+tochigi    1     1   1    1        2    1      1           1        1   
+trek       2     2   2    2        4    2      2           2        2   
+wib        1     1   1    1        2    1      1           1        1   
+–          1     1   1    1        2    1      1           1        1   
+
+         berkibar  ...  siang  tegang  terancamsaat  tergenang  terpaksa  to  \
+110             1  ...      1       1             1          1         1   1   
+2023            1  ...      1       1             1          1         1   1   
+80              1  ...      1       1             1          1         1   1   
+air             1  ...      1       1             1          1         1   1   
+bagnaia         2  ...      2       2             2          2         2   2   
+...           ...  ...    ...     ...           ...        ...       ...  ..   
+to              1  ...      1       1             1          1         1   0   
+tochigi         1  ...      1       1             1          1         1   1   
+trek            2  ...      2       2             2          2         2   2   
+wib             1  ...      1       1             1          1         1   1   
+–               1  ...      1       1             1          1         1   1   
+
+         tochigi  trek  wib  –  
+110            1     2    1  1  
+2023           1     2    1  1  
+80             1     2    1  1  
+air            1     2    1  1  
+bagnaia        2     4    2  2  
+...          ...   ...  ... ..  
+to             1     2    1  1  
+tochigi        0     2    1  1  
+trek           2     2    2  2  
+wib            1     2    0  1  
+–              1     2    1  0  
+
+[67 rows x 67 columns]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menentukan node dan kata pada setiap node</span>
+<span class="n">node_kata_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">kata</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kata</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words_list</span><span class="p">)}</span>
+
+<span class="c1"># Menampilkan node dan kata pada setiap node</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">kata</span> <span class="ow">in</span> <span class="n">node_kata_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: Kata = </span><span class="si">{</span><span class="n">kata</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node 0: Kata = 110
+Node 1: Kata = 2023
+Node 2: Kata = 80
+Node 3: Kata = air
+Node 4: Kata = bagnaia
+Node 5: Kata = ban
+Node 6: Kata = basah
+Node 7: Kata = benarbenar
+Node 8: Kata = bendera
+Node 9: Kata = berkibar
+Node 10: Kata = berupaya
+Node 11: Kata = bezzecchi
+Node 12: Kata = deras
+Node 13: Kata = dikibarkan
+Node 14: Kata = disusul
+Node 15: Kata = flag
+Node 16: Kata = francesco
+Node 17: Kata = garasinya
+Node 18: Kata = hujan
+Node 19: Kata = jalankondisi
+Node 20: Kata = jepang
+Node 21: Kata = jorge
+Node 22: Kata = jpnncom
+Node 23: Kata = ke10
+Node 24: Kata = ke1perlombaan
+Node 25: Kata = kehatihatian
+Node 26: Kata = kesabaranpada
+Node 27: Kata = keselamatan
+Node 28: Kata = lap
+Node 29: Kata = marc
+Node 30: Kata = marco
+Node 31: Kata = marquezseluruh
+Node 32: Kata = marqueztak
+Node 33: Kata = martin
+Node 34: Kata = masingmasing
+Node 35: Kata = memacu
+Node 36: Kata = memimpin
+Node 37: Kata = mengganti
+Node 38: Kata = mengguyur
+Node 39: Kata = menjaga
+Node 40: Kata = merah
+Node 41: Kata = miguel
+Node 42: Kata = minggu
+Node 43: Kata = mobility
+Node 44: Kata = motegi
+Node 45: Kata = motegisebelumnya
+Node 46: Kata = motogp
+Node 47: Kata = motor
+Node 48: Kata = motornya
+Node 49: Kata = oliveira
+Node 50: Kata = pembalap
+Node 51: Kata = penuh
+Node 52: Kata = penyesuaian
+Node 53: Kata = persen
+Node 54: Kata = race
+Node 55: Kata = red
+Node 56: Kata = resort
+Node 57: Kata = siang
+Node 58: Kata = tegang
+Node 59: Kata = terancamsaat
+Node 60: Kata = tergenang
+Node 61: Kata = terpaksa
+Node 62: Kata = to
+Node 63: Kata = tochigi
+Node 64: Kata = trek
+Node 65: Kata = wib
+Node 66: Kata = –
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membentuk-grap-dari-co-occurancy-matriks-g">
+<h1>Membentuk grap dari co-occurancy matriks G<a class="headerlink" href="#membentuk-grap-dari-co-occurancy-matriks-g" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan graf</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Graf dari Matriks Co-occurrence&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b561b1ba5f87b7a8e4c030c46b36528a9aeee884b46e370e8d477c0cee43657d.png" src="../_images/b561b1ba5f87b7a8e4c030c46b36528a9aeee884b46e370e8d477c0cee43657d.png" />
+</div>
+</div>
+</section>
+<section id="menghitung-centrality-dari-node-dalam-graph">
+<h1>Menghitung centrality dari node dalam graph<a class="headerlink" href="#menghitung-centrality-dari-node-dalam-graph" title="Permalink to this heading">#</a></h1>
+<p><strong>-Clossnes centrality nx.centrality(G)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># menghitung closeness centrality dari setiap simpul pada graf berarah G, mengurutkannya secara menurun</span>
+<span class="n">closeness_centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">sorted_closeness</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">closeness_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sorted Closeness Centrality:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">closeness</span> <span class="ow">in</span> <span class="n">sorted_closeness</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">closeness</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted Closeness Centrality:
+Node 0: 1.0000
+Node 1: 1.0000
+Node 2: 1.0000
+Node 3: 1.0000
+Node 4: 1.0000
+Node 5: 1.0000
+Node 6: 1.0000
+Node 7: 1.0000
+Node 8: 1.0000
+Node 9: 1.0000
+Node 10: 1.0000
+Node 11: 1.0000
+Node 12: 1.0000
+Node 13: 1.0000
+Node 14: 1.0000
+Node 15: 1.0000
+Node 16: 1.0000
+Node 17: 1.0000
+Node 18: 1.0000
+Node 19: 1.0000
+Node 20: 1.0000
+Node 21: 1.0000
+Node 22: 1.0000
+Node 23: 1.0000
+Node 24: 1.0000
+Node 25: 1.0000
+Node 26: 1.0000
+Node 27: 1.0000
+Node 28: 1.0000
+Node 29: 1.0000
+Node 30: 1.0000
+Node 31: 1.0000
+Node 32: 1.0000
+Node 33: 1.0000
+Node 34: 1.0000
+Node 35: 1.0000
+Node 36: 1.0000
+Node 37: 1.0000
+Node 38: 1.0000
+Node 39: 1.0000
+Node 40: 1.0000
+Node 41: 1.0000
+Node 42: 1.0000
+Node 43: 1.0000
+Node 44: 1.0000
+Node 45: 1.0000
+Node 46: 1.0000
+Node 47: 1.0000
+Node 48: 1.0000
+Node 49: 1.0000
+Node 50: 1.0000
+Node 51: 1.0000
+Node 52: 1.0000
+Node 53: 1.0000
+Node 54: 1.0000
+Node 55: 1.0000
+Node 56: 1.0000
+Node 57: 1.0000
+Node 58: 1.0000
+Node 59: 1.0000
+Node 60: 1.0000
+Node 61: 1.0000
+Node 62: 1.0000
+Node 63: 1.0000
+Node 64: 1.0000
+Node 65: 1.0000
+Node 66: 1.0000
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>- Pagerank centrality nx.pagerank (G)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan PageRank centrality</span>
+<span class="n">pagerank_centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PageRank Centrality:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">centrality</span> <span class="ow">in</span> <span class="n">pagerank_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">centrality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PageRank Centrality:
+0: 0.01235325776841179
+1: 0.01235325776841179
+2: 0.01235325776841179
+3: 0.01235325776841179
+4: 0.022490418328200673
+5: 0.01235325776841179
+6: 0.01235325776841179
+7: 0.01235325776841179
+8: 0.01235325776841179
+9: 0.01235325776841179
+10: 0.01235325776841179
+11: 0.01235325776841179
+12: 0.01235325776841179
+13: 0.01235325776841179
+14: 0.02249041832820067
+15: 0.032627578887989554
+16: 0.01235325776841179
+17: 0.01235325776841179
+18: 0.01235325776841179
+19: 0.01235325776841179
+20: 0.01235325776841179
+21: 0.01235325776841179
+22: 0.01235325776841179
+23: 0.01235325776841179
+24: 0.01235325776841179
+25: 0.01235325776841179
+26: 0.01235325776841179
+27: 0.01235325776841179
+28: 0.02249041832820067
+29: 0.01235325776841179
+30: 0.01235325776841179
+31: 0.01235325776841179
+32: 0.01235325776841179
+33: 0.02249041832820067
+34: 0.01235325776841179
+35: 0.01235325776841179
+36: 0.02249041832820067
+37: 0.02249041832820067
+38: 0.01235325776841179
+39: 0.01235325776841179
+40: 0.01235325776841179
+41: 0.01235325776841179
+42: 0.01235325776841179
+43: 0.02249041832820067
+44: 0.01235325776841179
+45: 0.01235325776841179
+46: 0.01235325776841179
+47: 0.01235325776841179
+48: 0.022490418328200677
+49: 0.01235325776841179
+50: 0.06303906056735618
+51: 0.01235325776841179
+52: 0.01235325776841179
+53: 0.01235325776841179
+54: 0.01235325776841179
+55: 0.01235325776841179
+56: 0.022490418328200677
+57: 0.01235325776841179
+58: 0.01235325776841179
+59: 0.01235325776841179
+60: 0.01235325776841179
+61: 0.01235325776841179
+62: 0.01235325776841179
+63: 0.01235325776841179
+64: 0.022490418328200677
+65: 0.01235325776841179
+66: 0.01235325776841179
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="merangking-node-kata-dari-centrality">
+<h1>Merangking node (kata) dari centrality<a class="headerlink" href="#merangking-node-kata-dari-centrality" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan node yang diurutkan berdasarkan PageRank centrality</span>
+<span class="n">sorted_nodes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pagerank_centrality</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">pagerank_centrality</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Node yang diurutkan berdasarkan PageRank Centrality:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">sorted_nodes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">pagerank_centrality</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node yang diurutkan berdasarkan PageRank Centrality:
+50: 0.06303906056735618
+15: 0.032627578887989554
+48: 0.022490418328200677
+56: 0.022490418328200677
+64: 0.022490418328200677
+4: 0.022490418328200673
+14: 0.02249041832820067
+28: 0.02249041832820067
+33: 0.02249041832820067
+36: 0.02249041832820067
+37: 0.02249041832820067
+43: 0.02249041832820067
+0: 0.01235325776841179
+1: 0.01235325776841179
+2: 0.01235325776841179
+3: 0.01235325776841179
+5: 0.01235325776841179
+6: 0.01235325776841179
+7: 0.01235325776841179
+8: 0.01235325776841179
+9: 0.01235325776841179
+10: 0.01235325776841179
+11: 0.01235325776841179
+12: 0.01235325776841179
+13: 0.01235325776841179
+16: 0.01235325776841179
+17: 0.01235325776841179
+18: 0.01235325776841179
+19: 0.01235325776841179
+20: 0.01235325776841179
+21: 0.01235325776841179
+22: 0.01235325776841179
+23: 0.01235325776841179
+24: 0.01235325776841179
+25: 0.01235325776841179
+26: 0.01235325776841179
+27: 0.01235325776841179
+29: 0.01235325776841179
+30: 0.01235325776841179
+31: 0.01235325776841179
+32: 0.01235325776841179
+34: 0.01235325776841179
+35: 0.01235325776841179
+38: 0.01235325776841179
+39: 0.01235325776841179
+40: 0.01235325776841179
+41: 0.01235325776841179
+42: 0.01235325776841179
+44: 0.01235325776841179
+45: 0.01235325776841179
+46: 0.01235325776841179
+47: 0.01235325776841179
+49: 0.01235325776841179
+51: 0.01235325776841179
+52: 0.01235325776841179
+53: 0.01235325776841179
+54: 0.01235325776841179
+55: 0.01235325776841179
+57: 0.01235325776841179
+58: 0.01235325776841179
+59: 0.01235325776841179
+60: 0.01235325776841179
+61: 0.01235325776841179
+62: 0.01235325776841179
+63: 0.01235325776841179
+65: 0.01235325776841179
+66: 0.01235325776841179
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menentukan-beberapa-kata-penting-berdasarkan-rangking">
+<h1>Menentukan beberapa kata penting berdasarkan rangking<a class="headerlink" href="#menentukan-beberapa-kata-penting-berdasarkan-rangking" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menentukan jumlah kata penting yang ingin diambil</span>
+<span class="n">jumlah_kata_penting</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Memilih sejumlah node teratas berdasarkan PageRank centrality</span>
+<span class="n">kata_penting</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pagerank_centrality</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">pagerank_centrality</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="n">jumlah_kata_penting</span><span class="p">]</span>
+
+<span class="c1"># Membuat pemetaan node ke kata</span>
+<span class="n">node_kata_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="n">kata</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">kata</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">)}</span>
+
+<span class="c1"># Menampilkan kata pada node terpenting saja</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jumlah_kata_penting</span><span class="si">}</span><span class="s2"> Kata Penting Beserta PageRank Centrality:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">kata_penting</span><span class="p">:</span>
+    <span class="n">kata</span> <span class="o">=</span> <span class="n">node_kata_mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;Tidak Diketahui&quot;</span><span class="p">)</span>
+    <span class="n">centrality</span> <span class="o">=</span> <span class="n">pagerank_centrality</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;Tidak Diketahui&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: Kata = </span><span class="si">{</span><span class="n">kata</span><span class="si">}</span><span class="s2">, PageRank Centrality = </span><span class="si">{</span><span class="n">centrality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 Kata Penting Beserta PageRank Centrality:
+Node 50: Kata = masingmasing, PageRank Centrality = 0.06303906056735618
+Node 15: Kata = motegi, PageRank Centrality = 0.032627578887989554
+Node 48: Kata = di, PageRank Centrality = 0.022490418328200677
+Node 56: Kata = resort, PageRank Centrality = 0.022490418328200677
+Node 64: Kata = ban, PageRank Centrality = 0.022490418328200677
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tugas-ppw"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Closeness centrality ke 2</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ekstraksi keyword</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#memecah-kalimat-dari-dokumen">Memecah kalimat dari dokumen</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-co-occurancy-matriks-dari-kata-dalam-kalimat">Membentuk co-occurancy matriks dari kata dalam kalimat</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-grap-dari-co-occurancy-matriks-g">Membentuk grap dari co-occurancy matriks G</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-centrality-dari-node-dalam-graph">Menghitung centrality dari node dalam graph</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#merangking-node-kata-dari-centrality">Merangking node (kata) dari centrality</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-beberapa-kata-penting-berdasarkan-rangking">Menentukan beberapa kata penting berdasarkan rangking</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Farid Ghozali
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
